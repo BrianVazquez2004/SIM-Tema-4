@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.briansystems.analisisreportes.analisiscontrolador.AnalisisController">
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+    </padding>
+
+    <GridPane hgap="10.0" vgap="10.0">
+        <children>
+            <Label text="Número de Corridas (N):" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="txtCorridas" text="100" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Nivel de Confianza:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <ComboBox fx:id="cbConfianza" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Button text="Generar Reporte Analítico" onAction="#onGenerarReporteClick" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        </children>
+    </GridPane>
+
+    <TableView fx:id="tablaMetricas" prefHeight="200.0" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colMetrica" prefWidth="200.0" text="Métrica Evaluada" />
+            <TableColumn fx:id="colPromedio" prefWidth="100.0" text="Promedio" />
+            <TableColumn fx:id="colInf" prefWidth="110.0" text="Límite Inf. (IC)" />
+            <TableColumn fx:id="colSup" prefWidth="110.0" text="Límite Sup. (IC)" />
+            <TableColumn fx:id="colEstado" prefWidth="150.0" text="Estado" />
+        </columns>
+    </TableView>
+
+    <Label text="Resumen Ejecutivo:" style="-fx-font-weight: bold;" />
+    <TextArea fx:id="txtResumen" prefHeight="130.0" editable="false" wrapText="true" />
+</VBox>

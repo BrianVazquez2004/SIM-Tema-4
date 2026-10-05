@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.briansystems.inventarios.inventarioscontrolador.InventariosController">
+    <padding>
+        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+    </padding>
+
+    <!-- Formulario de Parámetros -->
+    <GridPane hgap="10.0" vgap="10.0">
+        <children>
+            <Label text="Inventario Inicial:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="txtInvInicial" text="50" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+            <Label text="Punto de Reorden (R):" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="txtReorden" text="15" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label text="Cantidad de Pedido (Q):" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="txtCantidadOrden" text="40" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label text="Días a simular:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField fx:id="txtDias" text="30" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Button text="Simular Inventario" onAction="#onSimularClick" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        </children>
+    </GridPane>
+
+    <!-- Tabla de Control de Inventario -->
+    <TableView fx:id="tablaInventario" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colDia" prefWidth="50.0" text="Día" />
+            <TableColumn fx:id="colInvInicial" prefWidth="90.0" text="Inv. Inicial" />
+            <TableColumn fx:id="colDemanda" prefWidth="80.0" text="Demanda" />
+            <TableColumn fx:id="colInvFinal" prefWidth="90.0" text="Inv. Final" />
+            <TableColumn fx:id="colFaltante" prefWidth="80.0" text="Faltante" />
+            <TableColumn fx:id="colOrden" prefWidth="90.0" text="Pedido (Q)" />
+            <TableColumn fx:id="colEntrega" prefWidth="110.0" text="Días p/ Entrega" />
+        </columns>
+    </TableView>
+
+    <!-- Métricas -->
+    <HBox spacing="20.0">
+        <children>
+            <Label fx:id="lblTotalFaltantes" text="Unidades Faltantes Totales: 0" style="-fx-font-weight: bold;" />
+            <Label fx:id="lblTotalOrdenes" text="Pedidos Realizados: 0" style="-fx-font-weight: bold;" />
+        </children>
+    </HBox>
+</VBox>
